@@ -79,99 +79,63 @@
 
 $(document).ready(function(){
 
+    var targetNum = "first";
 
-  $(".number").on("click", function() {
-    if (targetNum === "first"){
-      console.log(this.value);
-      var $firstNumHead = $("#first-number");
-      $firstNumHead.append(this.value);
-    }
-    else if (targetNum === "second"){
-      console.log(this.value);
-      var $secondNumHead = $("#second-number");
-      $secondNumHead.append(this.value);
-    }
-  });
+    $(".number").on("click", function() {
 
-  // Your code here...
- //Pseudocode:
- //1. listening function for the numbers - values
+        if ( $("#result").text() != "" ) {
+            targetNum = "first";
+            clear();
+        }
 
-   var targetNum = "first"
-   //2. listening function for the operators
-   //3. listening function for equal
-   $(".equal").on("click", function() {
-    //Get the first number
-   var firstNum = parseInt($("#first-number").html());
+        if ( targetNum === "first") {
+            console.log(this.value);
+            var $firstNumHead = $("#first-number");
+            $firstNumHead.append(this.value);
+        }
 
-   $(".equal").on("click", function() {
-      console.log(this.value);
-     })
-     //Get the second number
-   var secondNum = parseInt($("#second-number").html());
+        else if ( targetNum === "second") {
+            console.log(this.value);
+            var $secondNumHead = $("#second-number");
+            $secondNumHead.append(this.value);
+        }
 
-      $(".operator").on("click", function() {
-       console.log(this.value);
-       targetNum = "second";
-       })
-     //Get the operator
-   var op = $("#operator").html();
+    })
 
-     $(".number").on("click", function() {
-       if (targetNum === "first"){
-         console.log(this.value);
-         var $firstNumHead = $("#first-number");
-         $firstNumHead.append(this.value);
-       }
-     //Perform the math
-   var result = "error";
+    $(".operator").on("click", function() {
+        if ($("#first-number").text() === "") {
+            var $firstNumHead = $("#first-number");
+            $firstNumHead.append("0");
+        }
+            
+        console.log(this.value);
+        targetNum = "second";
+        var $operatorHead = $("#operator");
 
-    else if (targetNum === "second"){
-         console.log(this.value);
-         var $secondNumHead = $("#second-number");
-         $secondNumHead.append(this.value);
-       }
-   if (op === "+") {
-    result = firstNum + secondNum;
- }
+        if (this.value === "plus") {
+            $operatorHead.text("+");
+        }
 
-   })
- else if (op === "-"){
-   result = firstNum - secondNum;
- }
+        else if (this.value === "minus") {
+            $operatorHead.text("-");
+        }
 
- else if (op === "*") {
-   result = firstNum * secondNum;
- }
+        else if (this.value === "times") {
+            $operatorHead.text("*");
+        }
 
- else if (op === "/") {
-   result = firstNum / secondNum;
- }
+        else if (this.value === "divide") {
+            $operatorHead.text("/");
+        }
 
- else if (op === "^") {
-   result = Math.pow(firstNum, secondNum);
- }
+        else if (this.value === "power") {
+            $operatorHead.text("^");
+        }
+    })
 
-   //Display the result
- $("#result").html(result);
-
- });
-
-
- //4. listening function for clear
- $(".clear").on("click", function() {
-   $("#first-number").html("");
-   $("#second-number").html("");
-   $("#operator").html("");
-   $("#result").html("");
-  // $(".panel-body h1").each(function(index, element){
-  //   console.log(index + ":" + $(this).text());
-  // });
- });
 
 });
 
-console.log('hi');
 </script>
 
 </body>
