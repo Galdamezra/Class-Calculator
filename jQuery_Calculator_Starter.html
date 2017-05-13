@@ -79,63 +79,38 @@
 
 $(document).ready(function(){
 
-    var targetNum = "first";
+// Your code here...
 
-    $(".number").on("click", function() {
+  var targetNum = "first"
 
-        if ( $("#result").text() != "" ) {
-            targetNum = "first";
-            clear();
-        }
+  $(".equal").on("click", function() {
+    console.log(this.value);
+  })
 
-        if ( targetNum === "first") {
-            console.log(this.value);
-            var $firstNumHead = $("#first-number");
-            $firstNumHead.append(this.value);
-        }
+  $(".operator").on("click", function() {
+    console.log(this.value);
+    targetNum = "second";
+  })
 
-        else if ( targetNum === "second") {
-            console.log(this.value);
-            var $secondNumHead = $("#second-number");
-            $secondNumHead.append(this.value);
-        }
+  $(".number").on("click", function() {
+    if (targetNum === "first"){
+      console.log(this.value);
+      var $firstNumHead = $("#first-number");
+      $firstNumHead.append(this.value);
+    }
 
-    })
+    else if (targetNum === "second"){
+      console.log(this.value);
+      var $secondNumHead = $("#second-number");
+      $secondNumHead.append(this.value);
+    }
 
-    $(".operator").on("click", function() {
-        if ($("#first-number").text() === "") {
-            var $firstNumHead = $("#first-number");
-            $firstNumHead.append("0");
-        }
-            
-        console.log(this.value);
-        targetNum = "second";
-        var $operatorHead = $("#operator");
-
-        if (this.value === "plus") {
-            $operatorHead.text("+");
-        }
-
-        else if (this.value === "minus") {
-            $operatorHead.text("-");
-        }
-
-        else if (this.value === "times") {
-            $operatorHead.text("*");
-        }
-
-        else if (this.value === "divide") {
-            $operatorHead.text("/");
-        }
-
-        else if (this.value === "power") {
-            $operatorHead.text("^");
-        }
-    })
+  })
 
 
 });
 
+console.log('hi');
 </script>
 
 </body>
